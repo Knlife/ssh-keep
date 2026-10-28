@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+.coverage
+.DS_Store
+config.local.json
+*.log
+*.jsonl
+*.sock
+.env
+secrets/
+*.pem
+id_*

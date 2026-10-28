@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "tunnels": [
+    {"name": "example", "host": "my-ssh-alias"}
+  ]
+}

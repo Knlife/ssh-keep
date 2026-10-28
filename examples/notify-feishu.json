@@ -1,0 +1,9 @@
+{
+  "after_failures": 5,
+  "cooldown": 900,
+  "timeout": 10,
+  "recovery": true,
+  "command": [
+    "feishu_msg", "--title", "SSH tunnel {event}", "--msg", "{message}"
+  ]
+}

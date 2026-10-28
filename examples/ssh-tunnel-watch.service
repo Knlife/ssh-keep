@@ -1,0 +1,15 @@
+[Unit]
+Description=SSH tunnel dashboard supervisor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/ssh-tunnel-watch run --config %h/.config/ssh-tunnel-watch/config.json --no-ui
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=15
+UMask=0077
+
+[Install]
+WantedBy=default.target

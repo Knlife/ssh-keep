@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "defaults": {
+    "connect_timeout": 10,
+    "startup_timeout": 30,
+    "server_alive_interval": 15,
+    "server_alive_count_max": 3,
+    "check_interval": 20,
+    "probe_timeout": 12,
+    "probe_failures": 3,
+    "stable_after": 60,
+    "backoff": {
+      "initial": 2,
+      "factor": 2,
+      "maximum": 120,
+      "jitter": 0.2
+    }
+  },
+  "notify": {
+    "after_failures": 5,
+    "cooldown": 900,
+    "timeout": 10,
+    "recovery": true,
+    "command": []
+  },
+  "tunnels": [
+    {
+      "name": "D",
+      "host": "D",
+      "health_command": [
+        "python3",
+        "-c",
+        "import http.client,sys; c=http.client.HTTPConnection(\"127.0.0.1\",11020,timeout=5); c.request(\"GET\",\"http://127.0.0.1:11023/version\"); r=c.getresponse(); r.read(1024); c.close(); sys.exit(0 if r.status in (200,401) else 1)"
+      ]
+    },
+    {
+      "name": "CPU",
+      "host": "CPU",
+      "health_command": [
+        "python3",
+        "-c",
+        "import http.client,sys; c=http.client.HTTPConnection(\"127.0.0.1\",11020,timeout=5); c.request(\"GET\",\"http://127.0.0.1:11023/version\"); r=c.getresponse(); r.read(1024); c.close(); sys.exit(0 if r.status in (200,401) else 1)"
+      ]
+    }
+  ]
+}
